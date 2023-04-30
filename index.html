@@ -1,58 +1,104 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
     <title>Facop - orçamento de HOF</title>
 </head>
+
 <body>
+    <h1>Procedimentos</h1>
     <form action="submission.html" method="POST">
-        <h1>Procedimentos</h1>
+
         <section>
-            
             <span>Bichectomia</span>
-            
-            <input type="radio" name="bichectomia" id="bichetomia-normal" value="700">
-            <label for="bichetomia-normal">R$700,00</label>
+            <div class="input-container">
+                <input type="checkbox" name="bichectomia" id="bichetomia-normal" value="700" />
+                <label for="bichetomia-normal">R$700,00</label>
 
-            <input type="radio" name="bichectomia" id="bichectomia-discount" value="300">
-            <label for="bichectomia-discount">R$300,00</label>
+                <input type="checkbox" name="bichectomia" id="bichectomia-discount" value="300" />
+                <label for="bichectomia-discount">R$300,00</label>
 
-            <input type="radio" name="bichectomia" id="bichectomia-parcel" value="490">
-            <label for="bichectomia-parcel">R$490,00</label>          
+                <input type="checkbox" name="bichectomia" id="bichectomia-parcel" value="490" />
+                <label for="bichectomia-parcel">R$490,00</label>
+            </div>
         </section>
-        <section>            
+        <section>
             <span>Bleferosplatia</span>
-             
-            <input type="radio" name="bleferosplatia" id="blefe-normal" value="2000" >
-            <label for="blefe-normal">R$2.000,00</label>
+            <div class="input-container">
+                <input type="checkbox" name="bleferosplatia" id="blefe-normal" value="2000" />
+                <label for="blefe-normal">R$2.000,00</label>
 
-            <input type="radio" name="bleferosplatia" id="blefe-discount" value="1000">
-            <label for="blefe-discount">R$1.000,00</label>
+                <input type="checkbox" name="bleferosplatia" id="blefe-discount" value="1000" />
+                <label for="blefe-discount">R$1.000,00</label>
 
-            <input type="radio" name="bleferosplatia" id="blefe-parcel" value="1400">
-            <label for="blefe-parcel">R$1.400,00</label>          
+                <input type="checkbox" name="bleferosplatia" id="blefe-parcel" value="1400" />
+                <label for="blefe-parcel">R$1.400,00</label>
+            </div>
         </section>
-    </form>
-    <script>     
-       
-        function handleRadioBtn() {
-            var groups = ['bichectomia', 'bleferosplatia'];
-            var result = [];
+        <section>
+            <span>Lipo de Papada Cirúrgica</span>
+            <div class="input-container">
+                <input type="checkbox" name="papada" id="papada-normal" value="1000" />
+                <label for="papada-normal">R$1.000,00</label>
 
-            groups.forEach(function(group,i){
-                result[i] = document.querySelector(`input[name="${group}"]:checked`).value;
-                if(result[i] === null) return
-            }); 
-            console.log(result);    
+                <input type="checkbox" name="papada" id="papada-discount" value="500" />
+                <label for="papada-discount">R$500,00</label>
+
+                <input type="checkbox" name="papada" id="papada-parcel" value="700" />
+                <label for="papada-parcel">R$700,00</label>
+            </div>
+        </section>
+        <section>
+            <span>Microagrulhamento</span>
+            <div class="input-container">
+                <input type="checkbox" name="microagrulhamento" id="agulhamento-normal" value="500" />
+                <label for="agulhamento-normal">R$500,00</label>
+
+                <input type="checkbox" name="microagrulhamento" id="agulhamento-discount" value="250" />
+                <label for="agulhamento-discount">R$250,00</label>
+
+                <input type="checkbox" name="microagrulhamento" id="agulhamento-parcel" value="350" />
+                <label for="agulhamento-parcel">R$350,00</label>
+            </div>
+        </section>
+        <div class="valor">
+            <span id="a-vista"></span><br>
+            <span id="parcelado"></span>
+        </div>
+
+        <input type="button" value="Calcular" onclick="calcularAVista()">
+        <input type="button" value="Parcelar" onclick="calcularParcelado()">
+
+    </form>
+
+    <script>
+        // 
+        function calcularAVista() {
+            let total = 0;
+            let checkbox = document.getElementsByTagName("input");
+
+            for (let i = 0; i < checkbox.length; i++) {
+                if (checkbox[i].type === "checkbox" && checkbox[i].checked) {
+                    total += parseInt(checkbox[i].value);
+                }
+            }
+            document.getElementById('a-vista').innerHTML = `1 parcela de: R$${total}`;
+            return total;
+            /*console.log("Total: " + total);*/
         }
 
-        document.querySelectorAll("input[type='radio']").forEach((input) => {
-            input.addEventListener('change', handleRadioBtn)
-        })        
-     
+        function calcularParcelado() {
+            let valorAVista = calcularAVista();
+            let valorParcelado = Math.floor(valorAVista / 3);
+            document.getElementById('parcelado').innerHTML = `3 parcelas de: R$${valorParcelado}`;
+        }
+
 
     </script>
 </body>
+
 </html>
