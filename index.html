@@ -82,21 +82,29 @@
             let checkbox = document.getElementsByTagName("input");
 
             for (let i = 0; i < checkbox.length; i++) {
-                if (checkbox[i].type === "checkbox" && checkbox[i].checked) {
-                    total += parseInt(checkbox[i].value);
+                if (checkbox[i].id.includes('discount')) {
+                    if (checkbox[i].type === "checkbox" && checkbox[i].checked) {
+                        total += parseInt(checkbox[i].value);
+                    }
                 }
             }
             document.getElementById('a-vista').innerHTML = `1 parcela de: R$${total}`;
-            return total;
             /*console.log("Total: " + total);*/
         }
 
         function calcularParcelado() {
-            let valorAVista = calcularAVista();
-            let valorParcelado = Math.floor(valorAVista / 3);
-            document.getElementById('parcelado').innerHTML = `3 parcelas de: R$${valorParcelado}`;
-        }
+            let total = 0;
+            let checkbox = document.getElementsByTagName("input");
 
+            for (let i = 0; i < checkbox.length; i++) {
+                if (checkbox[i].id.includes('parcel')) {
+                    if (checkbox[i].type === "checkbox" && checkbox[i].checked) {
+                        total += Math.floor(parseInt(checkbox[i].value) / 3);
+                    }
+                }
+            }
+            document.getElementById('parcelado').innerHTML = `3 parcelas de: R$${total}`;
+        }
 
     </script>
 </body>
