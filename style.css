@@ -18,12 +18,12 @@ h1 {
 h2 {
     display: flex;
     justify-content: center;
-    font-size: 2rem;
+    font-size: 2.5rem;
     padding-bottom: 2rem;
 }
 
 table {
-    margin: 0 auto;
+    margin: 1.5rem auto;
     border-collapse: collapse;
     width: 80%;
     font-family: Arial, Helvetica, sans-serif;
@@ -32,17 +32,27 @@ table {
 td,
 th {
     text-align: left;
-    padding: 8px;
+    padding: 20px 0;
+    font-size: 1.2rem;
 }
 
 th {
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
 
+.bold {
+    font-weight: 600;
+}
 
-
+.result {
+    color: #03a303;
+    font-size: 1.3rem;
+}
 
 .input-number {
     width: 3rem;

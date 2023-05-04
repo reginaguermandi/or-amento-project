@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://facop.edu.br/wp-content/uploads/2021/12/cropped-favicon-facop-1-32x32.png"
+        sizes="32x32">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -34,7 +36,7 @@
         </div>
 
         <form action="" method="POST">
-            <h2>Procedimentos</h2>
+            <h2>Procedimentos Únicos</h2>
             <table>
                 <tr>
                     <th>Procedimento</th>
@@ -82,28 +84,71 @@
                     <td>Microagrulhamento</td>
                     <td>R$500,00</td>
                     <td>
-                        <label for="agulhamento-discount">R$250,00</label>
-                        <input type="checkbox" name="microagrulhamento" id="agulhamento-discount" value="250" />
+                        <label for="agulhamento-discount">R$100,00</label>
+                        <input type="checkbox" name="microagrulhamento" id="agulhamento-discount" value="100" />
                     </td>
                     <td>
-                        <label for="agulhamento-parcel">R$350,00</label>
-                        <input type="checkbox" name="microagrulhamento" id="agulhamento-parcel" value="350" />
+                        <label for="agulhamento-parcel">R$150,00</label>
+                        <input type="checkbox" name="microagrulhamento" id="agulhamento-parcel" value="150" />
                     </td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Valor Total:</td>
-                    <td></td>
+                    <td>Brow Lift (sem fio incluso)</td>
+                    <td>R$2.000,00</td>
                     <td>
-                        <div id="a-vista"></div>
+                        <label for="browlift-discount">R$1.000,00</label>
+                        <input type="checkbox" name="browlift" id="browlift-discount" value="1000" />
                     </td>
                     <td>
-                        <div id="parcelado"></div>
+                        <label for="browlift-discount">R$1.400,00</label>
+                        <input type="checkbox" name="browlift" id="browlift-parcel" value="1400" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Lip Lifting</td>
+                    <td>R$120,00</td>
+                    <td>
+                        <label for="liplifting-discount">R$60,00</label>
+                        <input type="checkbox" name="liplifting" id="liplifting-discount" value="60" />
+                    </td>
+                    <td>
+                        <label for="liplifting-discount">R$84,00</label>
+                        <input type="checkbox" name="liplifting" id="liplifting-parcel" value="84" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Skinbooster</td>
+                    <td>R$700,00</td>
+                    <td>
+                        <label for="skinbooster-discount">R$210,00</label>
+                        <input type="checkbox" name="skinbooster" id="skinbooster-discount" value="210" />
+                    </td>
+                    <td>
+                        <label for="skinbooster-discount">R$350,00</label>
+                        <input type="checkbox" name="skinbooster" id="skinbooster-parcel" value="350" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Vitalize Lips</td>
+                    <td>R$120,00</td>
+                    <td>
+                        <label for="vitalizelips-discount">R$60,00</label>
+                        <input type="checkbox" name="vitalizelips" id="vitalizelips-discount" value="60" />
+                    </td>
+                    <td>
+                        <label for="vitalizelips-discount">R$84,00</label>
+                        <input type="checkbox" name="vitalizelips" id="vitalizelips-parcel" value="84" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td class="bold">Valor Total:</td>
+                    <td>
+                        <div id="a-vista" class="result"></div>
+                    </td>
+                    <td>
+                        <div id="parcelado" class="result"></div>
                     </td>
                 </tr>
                 <tr>
@@ -118,32 +163,316 @@
                 </tr>
             </table>
         </form>
+        <form action="">
+            <h2>Produtos e Procedimentos (Unidades e Sessões)</h2>
+            <table class="table-products">
+                <tr>
+                    <th>Produtos</th>
+                    <th>Normal</th>
+                    <th>À Vista</th>
+                    <th>Parcelado</th>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="units-1">Preenchedor Renovva Plus Lido</label>
+                    </td>
+                    <td>R$1.450,00</td>
+                    <td>
+                        <span>R$500,00</span>
+                        <input class="input-number" type="number" id="units-1" name="units" min="0"
+                            onchange="calculateUnitProducts()">
+                    </td>
+                    <td>
+                        <span>R$700,00</span>
+                        <input class="input-number" type="number" id="parcel-1" name="units" min="0"
+                            onchange="calculateUnitParcel()"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="units-2">Preenchedor Renovva Ultra Volume</label>
+                    </td>
+                    <td>R$2.400,00</td>
+                    <td>
+                        <span>R$500,00</span>
+                        <input class="input-number" type="number" id="units-2" name="units" min="0"
+                            onchange="calculateUnitProducts()">
+                    </td>
+                    <td>
+                        <span>R$700,00</span>
+                        <input class="input-number" type="number" id="parcel-2" name="units" min="0"
+                            onchange="calculateUnitParcel()"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="units-3">Preenchedor Ultra Volume Plus</label>
+                    </td>
+                    <td>R$1.600,00</td>
+                    <td>
+                        <span>R$500,00</span>
+                        <input class="input-number" type="number" id="units-3" name="units" min="0"
+                            onchange="calculateUnitProducts()">
+                    </td>
+                    <td>
+                        <span>R$700,00</span>
+                        <input class="input-number" type="number" id="parcel-3" name="units" min="0"
+                            onchange="calculateUnitParcel()"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="units-4">Preenchedor Volume</label>
+                    </td>
+                    <td>R$1.700,00</td>
+                    <td>
+                        <span>R$500,00</span>
+                        <input class="input-number" type="number" id="units-4" name="units" min="0"
+                            onchange="calculateUnitProducts()">
+                    </td>
+                    <td>
+                        <span>R$700,00</span>
+                        <input class="input-number" type="number" id="parcel-4" name="units" min="0"
+                            onchange="calculateUnitParcel()"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="units-5">Preenchedor Volume Filler</label>
+                    </td>
+                    <td>R$1.400,00</td>
+                    <td>
+                        <span>R$500,00</span>
+                        <input class="input-number" type="number" id="units-5" name="units" min="0"
+                            onchange="calculateUnitProducts()">
+                    </td>
+                    <td>
+                        <span>R$700,00</span>
+                        <input class="input-number" type="number" id="parcel-5" name="units" min="0"
+                            onchange="calculateUnitParcel()"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="units-6">Toxina Botulínica (UNIDADE)</label>
+                    </td>
+                    <td>R$30,00</td>
+                    <td>
+                        <span>R$9,00</span>
+                        <input class="input-number" type="number" id="units-6" name="units" min="0"
+                            onchange="calculateUnitProducts()">
+                    </td>
+                    <td>
+                        <span>R$15,00</span>
+                        <input class="input-number" type="number" id="parcel-6" name="units" min="0"
+                            onchange="calculateUnitParcel()"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="units-7">Bioestimulador (DIAMOND)</label>
+                    </td>
+                    <td>R$3.200,00</td>
+                    <td>
+                        <span>R$1.600,00</span>
+                        <input class="input-number" type="number" id="units-7" name="units" min="0"
+                            onchange="calculateUnitProducts()">
+                    </td>
+                    <td>
+                        <span>R$2.240,00</span>
+                        <input class="input-number" type="number" id="parcel-7" name="units" min="0"
+                            onchange="calculateUnitParcel()"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="units-8">Bioestimulador (ELEVA)</label>
+                    </td>
+                    <td>R$3.900,00</td>
+                    <td>
+                        <span>R$1.950,00</span>
+                        <input class="input-number" type="number" id="units-8" name="units" min="0"
+                            onchange="calculateUnitProducts()">
+                    </td>
+                    <td>
+                        <span>R$2.730,00</span>
+                        <input class="input-number" type="number" id="parcel-8" name="units" min="0"
+                            onchange="calculateUnitParcel()"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="units-9">Bioestimulador (RADIESSE)</label>
+                    </td>
+                    <td>R$3.600,00</td>
+                    <td>
+                        <span>R$1.800,00</span>
+                        <input class="input-number" type="number" id="units-9" name="units" min="0"
+                            onchange="calculateUnitProducts()">
+                    </td>
+                    <td>
+                        <span>R$2.520,00</span>
+                        <input class="input-number" type="number" id="parcel-9" name="units" min="0"
+                            onchange="calculateUnitParcel()"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="units-10">Fio Liso Agulhado</label>
+                    </td>
+                    <td>R$335,00</td>
+                    <td>
+                        <span>R$168,00</span>
+                        <input class="input-number" type="number" id="units-10" name="units" min="0"
+                            onchange="calculateUnitProducts()">
+                    </td>
+                    <td>
+                        <span>R$235,00</span>
+                        <input class="input-number" type="number" id="parcel-10" name="units" min="0"
+                            onchange="calculateUnitParcel()"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="units-11">Fio de Tração Especulado</label>
+                    </td>
+                    <td>R$600,00</td>
+                    <td>
+                        <span>R$300,00</span>
+                        <input class="input-number" type="number" id="units-11" name="units" min="0"
+                            onchange="calculateUnitProducts()">
+                    </td>
+                    <td>
+                        <span>R$420,00</span>
+                        <input class="input-number" type="number" id="parcel-11" name="units" min="0"
+                            onchange="calculateUnitParcel()"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="units-12">Fio Liso Parafuso Agulhado</label>
+                    </td>
+                    <td>R$350,00</td>
+                    <td>
+                        <span>R$176,00</span>
+                        <input class="input-number" type="number" id="units-12" name="units" min="0"
+                            onchange="calculateUnitProducts()">
+                    </td>
+                    <td>
+                        <span>R$245,00</span>
+                        <input class="input-number" type="number" id="parcel-12" name="units" min="0"
+                            onchange="calculateUnitParcel()"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="units-13">Fio Sculpt</label>
+                    </td>
+                    <td>R$900,00</td>
+                    <td>
+                        <span>R$450,00</span>
+                        <input class="input-number" type="number" id="units-13" name="units" min="0"
+                            onchange="calculateUnitProducts()">
+                    </td>
+                    <td>
+                        <span>R$630,00</span>
+                        <input class="input-number" type="number" id="parcel-13" name="units" min="0"
+                            onchange="calculateUnitParcel()"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="units-14">Fios Múltiplos</label>
+                    </td>
+                    <td>R$1.000,00</td>
+                    <td>
+                        <span>R$500,00</span>
+                        <input class="input-number" type="number" id="units-14" name="units" min="0"
+                            onchange="calculateUnitProducts()">
+                    </td>
+                    <td>
+                        <span>R$700,00</span>
+                        <input class="input-number" type="number" id="parcel-14" name="units" min="0"
+                            onchange="calculateUnitParcel()"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="units-15">Intradermoterapia</label>
+                    </td>
+                    <td>R$80,00</td>
+                    <td>
+                        <span>R$40,00</span>
+                        <input class="input-number" type="number" id="units-15" name="units" min="0"
+                            onchange="calculateUnitProducts()">
+                    </td>
+                    <td>
+                        <span>R$56,00</span>
+                        <input class="input-number" type="number" id="parcel-15" name="units" min="0"
+                            onchange="calculateUnitParcel()"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="units-15">Lipo Enzimática</label>
+                    </td>
+                    <td>R$800,00</td>
+                    <td>
+                        <span>R$400,00</span>
+                        <input class="input-number" type="number" id="units-15" name="units" min="0"
+                            onchange="calculateUnitProducts()">
+                    </td>
+                    <td>
+                        <span>R$560,00</span>
+                        <input class="input-number" type="number" id="parcel-15" name="units" min="0"
+                            onchange="calculateUnitParcel()"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="units-16">Ozonioterapia</label>
+                    </td>
+                    <td>R$100,00</td>
+                    <td>
+                        <span>R$50,00</span>
+                        <input class="input-number" type="number" id="units-16" name="units" min="0"
+                            onchange="calculateUnitProducts()">
+                    </td>
+                    <td>
+                        <span>R$70,00</span>
+                        <input class="input-number" type="number" id="parcel-16" name="units" min="0"
+                            onchange="calculateUnitParcel()"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="units-17">Peeling</label>
+                    </td>
+                    <td>R$100,00</td>
+                    <td>
+                        <span>R$50,00</span>
+                        <input class="input-number" type="number" id="units-17" name="units" min="0"
+                            onchange="calculateUnitProducts()">
+                    </td>
+                    <td>
+                        <span>R$70,00</span>
+                        <input class="input-number" type="number" id="parcel-17" name="units" min="0"
+                            onchange="calculateUnitParcel()"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="bold">Valor Total:</td>
+                    <td>
+                        <div id="total-cost" class="result"></div>
+                    </td>
+                    <td>
+                        <div id="parcel-cost" class="result"></div>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </main>
-
-
-
-    <form action="submission.html" method="POST">
-
-
-        <label for="units-1">Botox</label>
-        <span>15,00</span>
-        <input class="input-number" type="number" id="units-1" name="units" min="0" onchange="calculateUnitProducts()">
-        <span>20,00</span>
-        <input class="input-number" type="number" id="parcel-1" name="units" min="0"
-            onchange="calculateUnitParcel()"><br>
-
-
-        <label for="units-2">Preenchimento</label>
-        <span>20,00</span>
-        <input class="input-number" type="number" id="units-2" name="units" min="0" onchange="calculateUnitProducts()">
-        <span>25,00</span>
-        <input class="input-number" type="number" id="parcel-2" name="units" min="0"
-            onchange="calculateUnitParcel()"><br>
-
-        <div id="total-cost"></div>
-        <div id="parcel-cost"></div>
-    </form>
-
     <script src="script.js"></script>
 </body>
 
