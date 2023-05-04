@@ -75,14 +75,23 @@
             <input type="button" value="Parcelar" onclick="calcularParcelado()">
         </div>
 
-        <label for="units-1">Botox 18,00</label>
-        <input type="number" id="units-1" name="units" min="0" onchange="calculateUnitProducts()"><br>
+        <label for="units-1">Botox</label>
+        <span>15,00</span>
+        <input class="input-number" type="number" id="units-1" name="units" min="0" onchange="calculateUnitProducts()">
+        <span>20,00</span>
+        <input class="input-number" type="number" id="parcel-1" name="units" min="0"
+            onchange="calculateUnitParcel()"><br>
 
 
-        <label for="units-2">Preenchimento 20,00</label>
-        <input type="number" id="units-2" name="units" min="0" onchange="calculateUnitProducts()">
+        <label for="units-2">Preenchimento</label>
+        <span>20,00</span>
+        <input class="input-number" type="number" id="units-2" name="units" min="0" onchange="calculateUnitProducts()">
+        <span>25,00</span>
+        <input class="input-number" type="number" id="parcel-2" name="units" min="0"
+            onchange="calculateUnitParcel()"><br>
 
         <div id="total-cost"></div>
+        <div id="parcel-cost"></div>
     </form>
 
     <script src="script.js"></script>
