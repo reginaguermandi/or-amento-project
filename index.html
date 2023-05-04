@@ -5,75 +5,125 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
-    <title>Facop - orçamento de HOF</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <title>Facop - Orçamento de HOF</title>
 </head>
 
 <body>
-    <h1>Procedimentos</h1>
+    <header>
+        <div class="logo">
+            <a href="https://facop.edu.br" class="text-decoration-none text-reset d-block">
+                <img src="https://facop.edu.br/wp-content/themes/naitech_facop/img/logo.webp"
+                    onerror="this.src = 'https://facop.edu.br/wp-content/themes/naitech_facop/img/logo.png';"
+                    width="180" height="72">
+            </a>
+        </div>
+    </header>
+
+    <main>
+
+        <div class="banner">
+            <img width="100%" height="auto"
+                src="https://facop.edu.br/wp-content/themes/naitech_facop/img/bg-cursos-default.jpg" alt="">
+            <h1>Orçamento de Harmonização Facial</h1>
+        </div>
+
+        <form action="" method="POST">
+            <h2>Procedimentos</h2>
+            <table>
+                <tr>
+                    <th>Procedimento</th>
+                    <th>Normal</th>
+                    <th>À Vista</th>
+                    <th>Parcelado</th>
+                </tr>
+                <tr>
+                    <td>Bichectomia</td>
+                    <td>R$700,00</td>
+                    <td>
+                        <label for="bichectomia-discount"> R$300,00</label>
+                        <input type="checkbox" name="bichectomia" id="bichectomia-discount" value="300" />
+                    </td>
+                    <td>
+                        <label for="bichectomia-parcel">R$490,00</label>
+                        <input type="checkbox" name="bichectomia" id="bichectomia-parcel" value="490" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Bleferosplatia</td>
+                    <td>R$2.000,00</td>
+                    <td>
+                        <label for="blefe-discount">R$1.000,00</label>
+                        <input type="checkbox" name="bleferosplatia" id="blefe-discount" value="1000" />
+                    </td>
+                    <td>
+                        <label for="blefe-parcel">R$1.400,00</label>
+                        <input type="checkbox" name="bleferosplatia" id="blefe-parcel" value="1400" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Lipo de Papada Cirúrgica</td>
+                    <td>R$1.000,00</td>
+                    <td>
+                        <label for="papada-discount">R$500,00</label>
+                        <input type="checkbox" name="papada" id="papada-discount" value="500" />
+                    </td>
+                    <td>
+                        <label for="papada-parcel">R$700,00</label>
+                        <input type="checkbox" name="papada" id="papada-parcel" value="700" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Microagrulhamento</td>
+                    <td>R$500,00</td>
+                    <td>
+                        <label for="agulhamento-discount">R$250,00</label>
+                        <input type="checkbox" name="microagrulhamento" id="agulhamento-discount" value="250" />
+                    </td>
+                    <td>
+                        <label for="agulhamento-parcel">R$350,00</label>
+                        <input type="checkbox" name="microagrulhamento" id="agulhamento-parcel" value="350" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Valor Total:</td>
+                    <td></td>
+                    <td>
+                        <div id="a-vista"></div>
+                    </td>
+                    <td>
+                        <div id="parcelado"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <input class="btn" type="button" value="À Vista" onclick="calcularAVista()">
+                    </td>
+                    <td>
+                        <input class="btn" type="button" value="Parcelado" onclick="calcularParcelado()">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </main>
+
+
+
     <form action="submission.html" method="POST">
 
-        <section>
-            <span>Bichectomia</span>
-            <div class="input-container">
-                <label for="bichetomia-normal">R$700,00</label>
-
-                <input type="checkbox" name="bichectomia" id="bichectomia-discount" value="300" />
-                <label for="bichectomia-discount">R$300,00</label>
-
-                <input type="checkbox" name="bichectomia" id="bichectomia-parcel" value="490" />
-                <label for="bichectomia-parcel">R$490,00</label>
-            </div>
-        </section>
-
-        <section>
-            <span>Bleferosplatia</span>
-            <div class="input-container">
-                <label for="blefe-normal">R$2.000,00</label>
-
-                <input type="checkbox" name="bleferosplatia" id="blefe-discount" value="1000" />
-                <label for="blefe-discount">R$1.000,00</label>
-
-                <input type="checkbox" name="bleferosplatia" id="blefe-parcel" value="1400" />
-                <label for="blefe-parcel">R$1.400,00</label>
-            </div>
-        </section>
-
-        <section>
-            <span>Lipo de Papada Cirúrgica</span>
-            <div class="input-container">
-                <label for="papada-normal">R$1.000,00</label>
-
-                <input type="checkbox" name="papada" id="papada-discount" value="500" />
-                <label for="papada-discount">R$500,00</label>
-
-                <input type="checkbox" name="papada" id="papada-parcel" value="700" />
-                <label for="papada-parcel">R$700,00</label>
-            </div>
-        </section>
-
-        <section>
-            <span>Microagrulhamento</span>
-            <div class="input-container">
-                <label for="agulhamento-normal">R$500,00</label>
-
-                <input type="checkbox" name="microagrulhamento" id="agulhamento-discount" value="250" />
-                <label for="agulhamento-discount">R$250,00</label>
-
-                <input type="checkbox" name="microagrulhamento" id="agulhamento-parcel" value="350" />
-                <label for="agulhamento-parcel">R$350,00</label>
-            </div>
-        </section>
-
-        <div class="valor">
-            <span id="a-vista"></span><br>
-            <span id="parcelado"></span>
-        </div>
-
-        <div>
-            <input type="button" value="Calcular" onclick="calcularAVista()">
-            <input type="button" value="Parcelar" onclick="calcularParcelado()">
-        </div>
 
         <label for="units-1">Botox</label>
         <span>15,00</span>

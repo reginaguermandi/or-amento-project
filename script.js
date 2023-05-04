@@ -10,7 +10,7 @@ function calcularAVista() {
             }
         }
     }
-    document.getElementById('a-vista').innerHTML = `1 parcela de: R$${total}`;
+    document.getElementById('a-vista').innerHTML = `R$${total.toFixed(2)}`;
     /*console.log("Total: " + total);*/
 }
 
@@ -28,7 +28,7 @@ function calcularParcelado() {
             }
         }
     }
-    document.getElementById('parcelado').innerHTML = `R$${total} em 3 x R$${parcelValue}`;
+    document.getElementById('parcelado').innerHTML = `R$${total}<br> 3 x R$${parcelValue}`;
 }
 
 // loop through the unitary values of the products and takes the number 
@@ -55,5 +55,5 @@ function calculateUnitParcel() {
         parcelCost = totalCost / 3;
     }
     const parcelCostElement = document.getElementById('parcel-cost');
-    parcelCostElement.innerHTML = `Valor Total: R$${totalCost.toFixed(2)} em 3 x R$${parcelCost.toFixed(2)}`;
+    parcelCostElement.innerHTML = `Valor Total: R$${totalCost.toFixed(2)} 3 x R$${parcelCost.toFixed(2)}`;
 }
