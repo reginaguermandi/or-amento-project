@@ -16,7 +16,6 @@
         <section>
             <span>Bichectomia</span>
             <div class="input-container">
-                <input type="checkbox" name="bichectomia" id="bichetomia-normal" value="700" />
                 <label for="bichetomia-normal">R$700,00</label>
 
                 <input type="checkbox" name="bichectomia" id="bichectomia-discount" value="300" />
@@ -26,10 +25,10 @@
                 <label for="bichectomia-parcel">R$490,00</label>
             </div>
         </section>
+
         <section>
             <span>Bleferosplatia</span>
             <div class="input-container">
-                <input type="checkbox" name="bleferosplatia" id="blefe-normal" value="2000" />
                 <label for="blefe-normal">R$2.000,00</label>
 
                 <input type="checkbox" name="bleferosplatia" id="blefe-discount" value="1000" />
@@ -39,10 +38,10 @@
                 <label for="blefe-parcel">R$1.400,00</label>
             </div>
         </section>
+
         <section>
             <span>Lipo de Papada Cirúrgica</span>
             <div class="input-container">
-                <input type="checkbox" name="papada" id="papada-normal" value="1000" />
                 <label for="papada-normal">R$1.000,00</label>
 
                 <input type="checkbox" name="papada" id="papada-discount" value="500" />
@@ -52,10 +51,10 @@
                 <label for="papada-parcel">R$700,00</label>
             </div>
         </section>
+
         <section>
             <span>Microagrulhamento</span>
             <div class="input-container">
-                <input type="checkbox" name="microagrulhamento" id="agulhamento-normal" value="500" />
                 <label for="agulhamento-normal">R$500,00</label>
 
                 <input type="checkbox" name="microagrulhamento" id="agulhamento-discount" value="250" />
@@ -65,48 +64,28 @@
                 <label for="agulhamento-parcel">R$350,00</label>
             </div>
         </section>
+
         <div class="valor">
             <span id="a-vista"></span><br>
             <span id="parcelado"></span>
         </div>
 
-        <input type="button" value="Calcular" onclick="calcularAVista()">
-        <input type="button" value="Parcelar" onclick="calcularParcelado()">
+        <div>
+            <input type="button" value="Calcular" onclick="calcularAVista()">
+            <input type="button" value="Parcelar" onclick="calcularParcelado()">
+        </div>
 
+        <label for="units-1">Botox 18,00</label>
+        <input type="number" id="units-1" name="units" min="0" onchange="calculateUnitProducts()"><br>
+
+
+        <label for="units-2">Preenchimento 20,00</label>
+        <input type="number" id="units-2" name="units" min="0" onchange="calculateUnitProducts()">
+
+        <div id="total-cost"></div>
     </form>
 
-    <script>
-        // 
-        function calcularAVista() {
-            let total = 0;
-            let checkbox = document.getElementsByTagName("input");
-
-            for (let i = 0; i < checkbox.length; i++) {
-                if (checkbox[i].id.includes('discount')) {
-                    if (checkbox[i].type === "checkbox" && checkbox[i].checked) {
-                        total += parseInt(checkbox[i].value);
-                    }
-                }
-            }
-            document.getElementById('a-vista').innerHTML = `1 parcela de: R$${total}`;
-            /*console.log("Total: " + total);*/
-        }
-
-        function calcularParcelado() {
-            let total = 0;
-            let checkbox = document.getElementsByTagName("input");
-
-            for (let i = 0; i < checkbox.length; i++) {
-                if (checkbox[i].id.includes('parcel')) {
-                    if (checkbox[i].type === "checkbox" && checkbox[i].checked) {
-                        total += Math.floor(parseInt(checkbox[i].value) / 3);
-                    }
-                }
-            }
-            document.getElementById('parcelado').innerHTML = `3 parcelas de: R$${total}`;
-        }
-
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
