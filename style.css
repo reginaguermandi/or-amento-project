@@ -63,10 +63,26 @@ tr:nth-child(even) {
 .input-number {
     width: 3rem;
     padding: .5rem;
+    font-size: 1rem;
 }
 
 input[type=checkbox] {
     transform: scale(1.5);
+}
+
+.btn-reset {
+    background-color: #72327E;
+    border: none;
+    color: #FFE7FF;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: .8rem 1.5rem;
+}
+
+.btn-reset:hover {
+    background-color: #FFE7FF;
+    color: #72327E;
+    border: 1px solid #72327E;
 }
 
 .btn {
