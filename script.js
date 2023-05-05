@@ -34,7 +34,7 @@ function calcularParcelado() {
 // loop through the unitary values of the products and takes the number 
 //inserted in the input by the user and multiplies them giving the total value of the product purchased.
 function calculateUnitProducts() {
-    const unitPrices = [500, 500, 500, 500, 500, 9, 1600, 1950, 1800, 168, 300, 175, 450, 500, 40, 400, 50,];
+    const unitPrices = [500, 500, 500, 500, 500, 9, 1600, 1950, 1800, 168, 300, 175, 450, 500, 40, 400, 50, 50];
     let totalCost = 0;
 
     for (let i = 0; i < unitPrices.length; i++) {
@@ -46,7 +46,7 @@ function calculateUnitProducts() {
 }
 
 function calculateUnitParcel() {
-    const unitParcel = [700, 700, 700, 700, 700, 15, 2240, 2730, 2520, 235, 420, 245, 630, 700, 56, 560, 70];
+    const unitParcel = [700, 700, 700, 700, 700, 15, 2240, 2730, 2520, 235, 420, 245, 630, 700, 56, 560, 70, 70];
     let totalCost = 0;
 
     for (let i = 0; i < unitParcel.length; i++) {
@@ -56,4 +56,9 @@ function calculateUnitParcel() {
     }
     const parcelCostElement = document.getElementById('parcel-cost');
     parcelCostElement.innerHTML = `R$${totalCost.toFixed(2)}<br>3 x R$${parcelCost.toFixed(2)}`;
+}
+
+
+function resetPage() {
+    location.reload();
 }
